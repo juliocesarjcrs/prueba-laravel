@@ -1,6 +1,6 @@
 <template>
     <section class="modalCrearUsuario">
-        <modal ref="crearCliente" titulo="Crear usuario" tamano="modal-lg">
+        <modal ref="crearCliente" titulo="Crear cliente" tamano="modal-lg">
             <ValidationObserver ref="observer" v-slot="{ invalid }">
                 <div class="row justify-content-center mb-3">
                     <div class="col-5 mt-3">

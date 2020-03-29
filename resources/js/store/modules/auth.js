@@ -67,7 +67,7 @@ export const actions = {
         try {
             const {data} = await axios.post('/api/logout')
         } catch (e){ 
-            console.log('e loga', e);
+            console.log('e logout', e);
             
         }
 

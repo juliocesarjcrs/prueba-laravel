@@ -2,40 +2,42 @@
     <section class="modalCrearUsuario">
         <modal ref="crearUser" titulo="Crear usuario" tamano="modal-lg">
             <ValidationObserver ref="observer" v-slot="{ invalid }">
-                <div class="row justify-content-center mb-3">
-                    <div class="col-5 mt-3">
-                        <label for="" class="f-12 text-muted ml-2 mb-0">Nombres y apellidos</label>
-                        <ValidationProvider v-slot="{ errors }" name="nombres" rules="required">
-                            <input v-model="form.name" type="text" name="nombre" value="" class="form-control br-5" />
-                            <span class="text-danger f-10">{{errors[0]}}</span>
-                        </ValidationProvider>
+                <form> 
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-5 mt-3">
+                            <label for="" class="f-12 text-muted ml-2 mb-0">Nombres y apellidos</label>
+                            <ValidationProvider v-slot="{ errors }" name="nombres" rules="required">
+                                <input v-model="form.name" type="text" name="nombre" value="" class="form-control br-5" />
+                                <span class="text-danger f-10">{{errors[0]}}</span>
+                            </ValidationProvider>
+                        </div>
+                        <div class="col-5 mt-3">
+                            <label for="" class="f-12 text-muted f-10 ml-2 mb-0">Correo electrónico</label>
+                            <ValidationProvider v-slot="{ errors }" name="correo" rules="required|email">
+                                <input v-model="form.email" type="text" name="correo" value="" class="form-control br-5" />             
+                                <span class="text-danger f-10">{{errors[0]}}</span>
+                            </ValidationProvider>
+                        </div>
+                        <div class="col-5 mt-3">
+                            <label for="" class="f-12 ml-2 mb-0 lbl-select w-100 text-center">.</label>
+                            <el-radio-group v-model="form.rol">
+                                <el-radio :label="1">
+                                    Administrador
+                                </el-radio>
+                                <el-radio :label="2">
+                                    Vendedor
+                                </el-radio>
+                            </el-radio-group>
+                        </div>
+                        <div class="col-5 mt-3">
+                            <label for="" class="f-12 text-muted ml-2 mb-0 lbl-select w-100">Contraseña</label>
+                            <ValidationProvider v-slot="{ errors }" name="contraseña" :rules="`${ modoEdicion? '' : 'required|min:6'}`">
+                                <el-input v-model="form.password" placeholder="Please input password" show-password :disabled="modoEdicion" />
+                                <span class="text-danger f-10">{{errors[0]}}</span>
+                            </ValidationProvider>
+                        </div>
                     </div>
-                    <div class="col-5 mt-3">
-                        <label for="" class="f-12 text-muted f-10 ml-2 mb-0">Correo electrónico</label>
-                        <ValidationProvider v-slot="{ errors }" name="correo" rules="required|email">
-                            <input v-model="form.email" type="text" name="correo" value="" class="form-control br-5" />             
-                            <span class="text-danger f-10">{{errors[0]}}</span>
-                        </ValidationProvider>
-                    </div>
-                    <div class="col-5 mt-3">
-                        <label for="" class="f-12 ml-2 mb-0 lbl-select w-100 text-center">.</label>
-                        <el-radio-group v-model="form.rol">
-                            <el-radio :label="1">
-                                Administrador
-                            </el-radio>
-                            <el-radio :label="2">
-                                Vendedor
-                            </el-radio>
-                        </el-radio-group>
-                    </div>
-                    <div class="col-5 mt-3">
-                        <label for="" class="f-12 text-muted ml-2 mb-0 lbl-select w-100">Contraseña</label>
-                        <ValidationProvider v-slot="{ errors }" name="contraseña" :rules="`${ modoEdicion? '' : 'required|min:6'}`">
-                            <el-input v-model="form.password" placeholder="Please input password" show-password :disabled="modoEdicion" />
-                            <span class="text-danger f-10">{{errors[0]}}</span>
-                        </ValidationProvider>
-                    </div>
-                </div>
+                </form>
             </validationobserver>
 
             <div class="row">

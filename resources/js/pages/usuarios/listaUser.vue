@@ -6,6 +6,11 @@
                 <div class="col my-auto">
                     <hr />
                 </div>
+                <div class="col">
+                    <el-input v-model="query" placeholder="Buscar usuario por nombre">
+                        <i slot="prefix" class="el-input__icon el-icon-search" />
+                    </el-input>
+                </div>
                 <button type="button" name="button" class="btn btn-general">
                     <el-tooltip class="item" effect="dark" content="Agregar Usuario" placement="top-start">
                         <i class="el-icon-circle-plus-outline" @click="$refs.modalUsuario.toggle(null)" />
@@ -16,7 +21,7 @@
         <div class="container">
             <div class="row mx-2 my-3">
                 <div class="col-12">
-                    <el-table :data="tableRegistros" height="350" style="width: 100%">
+                    <el-table :data="buscador" height="350" style="width: 100%">
                         <el-table-column align="center" prop="id" label="Código" width="75" />
                         <el-table-column align="left" label="Rol" width="130">
                             <template slot-scope="scope">
@@ -55,11 +60,17 @@ export default {
         return {
             ruta: '/api/usuarios',
             tableRegistros: [],
+            query: ''
         }
     },
-    computed: mapGetters({
-        user: 'auth/user'
-    }),
+    computed: {
+        ...mapGetters({
+            user: 'auth/user'
+        }),
+        buscador(){
+            return this.tableRegistros.filter(e => e.name.toLowerCase().includes(this.query.toLowerCase()))
+        }
+    },
     mounted(){ 
         this.listRegistros()
     },

@@ -6,6 +6,7 @@ use App\Models\Clientes;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class ClientesController extends Controller
 {
@@ -59,7 +60,7 @@ class ClientesController extends Controller
             return DB::transaction(function () use ($id) {
                 $data["id"] = $id;
                 $v = Validator::make($data, [
-                    "id" => "required|exists:users,id",
+                    "id" => "required|exists:clientes,id",
                 ]);
                 if ($v->fails()) {
                     return ['error' => $v->errors()->first()];

@@ -65,9 +65,7 @@ export default {
             try {
                 const { data } = await axios(`${this.ruta}/listarclientes`)
                 this.$validar(data)
-                this.tableRegistros = data.clientes
-                console.log('this.tableRegistros', this.tableRegistros );
-                
+                this.tableRegistros = data.clientes               
             } catch (e){
                 this.error_catch(e)
             }
