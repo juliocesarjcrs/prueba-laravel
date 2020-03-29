@@ -1,0 +1,85 @@
+{
+  "root": true,
+  "parserOptions": {
+    "parser": "babel-eslint",
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "extends": [
+    "plugin:vue/recommended",
+    "plugin:vue/base",
+    "plugin:vue/essential",
+    "plugin:vue/strongly-recommended"
+  ],
+  "rules": {
+    "vue/max-attributes-per-line": "off",
+
+
+    "indent": [ "error", 4, {
+                "SwitchCase": 1,
+                "VariableDeclarator": 0
+            }
+        ],
+
+        "space-before-blocks": [ "error", "never" ],
+        "space-before-function-paren": [ "error", "never" ],
+        "space-in-parens": [ "error", "never" ],
+
+        "vue/html-closing-bracket-spacing": ["error", {
+            "selfClosingTag": "always"
+        }],
+
+        "vue/html-indent": ["error", 4, {
+            "attribute": 0,
+            "baseIndent": 1,
+            "closeBracket": 0,
+            "alignAttributesVertically": true,
+            "ignores": []
+        }],
+
+        "vue/mustache-interpolation-spacing": ["error", "never"],
+
+        "vue/singleline-html-element-content-newline": ["error", {
+            "ignores": [
+                "pre",
+                "textarea",
+                "p",
+                "label",
+                "a",
+                "option",
+                "span",
+                "h5",
+                ...INLINE_ELEMENTS
+            ]
+        }],
+
+        "vue/html-self-closing": ["error", {
+            "html": {
+              "void": "always",
+              "normal": "always",
+              "component": "always"
+            },
+            "svg": "always",
+            "math": "always"
+        }],
+
+
+  },
+  "plugins": [
+      "vue",
+  ],
+  "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
+  },
+  "globals": {
+      "axios": false,
+      "moment": false,
+      "$": false,
+      "Fun": false,
+      "_": false,
+      "echarts": false
+  }
+}
